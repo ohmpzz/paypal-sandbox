@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  paypal-sandbox:
+    build:
+      context: ./server/paypal-payment
+      dockerfile: Dockerfile
+      args:
+        PORT: 80
+        PAYPAL_MODE: sandbox
+        PAYPAL_CLIENT_ID: <PAYPAL_CLIENT_ID>
+        PAYPAL_CLIENT_SECRET: <PAYPAL_CLIENT_SECRET>
+    container_name: paypal-sandbox
+    expose:
+      - 80
+    restart: always
+    environment:
+      - VIRTUAL_HOST=paypal-sandbox.ohmpiromrak.com
+      - VIRTUAL_PROTO=http
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external:
+      name: reverse-proxy

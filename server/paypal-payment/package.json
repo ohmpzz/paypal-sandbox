@@ -1,0 +1,42 @@
+{
+  "name": "paypal-payment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "webpack -p  --progress",
+    "build:dev": "webpack --watch",
+    "clean": "rimraf build",
+    "watch": "nodemon ./build/index.js --watch",
+    "start": "yarn run build:dev",
+    "start:production": "yarn run clean && yarn run build"
+  },
+  "author": "Ohm Piromrak",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "dotenv-webpack": "^1.5.7",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "joi": "^14.3.0",
+    "joi-browser": "^13.4.0",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "paypal-rest-sdk": "^1.8.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "babel-loader": "^8.0.4",
+    "nodemon": "^1.18.8",
+    "nodemon-webpack-plugin": "^4.0.6",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  }
+}

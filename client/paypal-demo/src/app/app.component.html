@@ -1,0 +1,53 @@
+<div class="section">
+  <div class="container">
+    <h1 style="font-size: 2.5rem">Firestone Walker Union Jack</h1>
+    <hr />
+
+    <div class="columns" *ngIf="(callback | async) as p">
+      <div class="column" *ngIf="p.id">
+        <h3 style="font-size:1.25rem; color: red">Payment Info.</h3>
+        <hr />
+        <p>
+          Transaction ID: <strong>{{ p.id }}</strong>
+        </p>
+        <p>
+          total: <strong>{{ p.total }}</strong>
+        </p>
+        <p>
+          create time: <strong>{{ p.create_time | date: 'full' }}</strong>
+        </p>
+        <hr />
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <img
+          src="../assets/firestone-walker-union-jack.jpg"
+          alt="firestone-walker-union-jack"
+        />
+      </div>
+    </div>
+
+    <div class="columns ">
+      <div class="column is-two-thirds">
+        <form [formGroup]="form" (ngSubmit)="onCheckoutWithPaypal(form)">
+          <div class="field">
+            <label class="label">Quantity</label>
+            <div class="control">
+              <input
+                class="input is-primary"
+                type="number"
+                formControlName="quantity"
+              />
+            </div>
+          </div>
+          <button *ngIf="!isClick" type="submit" class="button is-link">
+            Check Out With Paypal
+          </button>
+          <a *ngIf="isClick" class="button is-link is-loading">Loading</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
